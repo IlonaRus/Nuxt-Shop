@@ -5,6 +5,7 @@
                 <NuxtLink to="/products" class="font-bold"
                     >Nuxt Shop Products</NuxtLink
                 >
+                <i class="material-icons mr-2">shopping_cart</i>
             </nav>
         </header>
 

@@ -15,6 +15,10 @@
                     Product description
                 </h3>
                 <p class="mb-7">{{ product.description }}</p>
+                <button class="btn flex" @click="addToCart(product)">
+                    <i class="material-icons mr-2">add_shopping_cart</i>
+                    <span>Add to cart</span>
+                </button>
             </div>
         </div>
     </div>
@@ -22,6 +26,18 @@
 
 <script setup>
 const { product } = defineProps(["product"]);
+
+const addToCart = (product) =>
+    fetch("https://fakestoreapi.com/carts", {
+        method: "POST",
+        body: JSON.stringify({
+            userId: product.id,
+            date: "2020-02-03",
+            products: [{ productId: product.id, quantity: 1 }],
+        }),
+    })
+        .then((res) => res.json())
+        .then((json) => console.log(json));
 </script>
 
 <style scoped>
